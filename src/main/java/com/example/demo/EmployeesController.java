@@ -28,6 +28,16 @@ public class EmployeesController {
 	@Autowired
 	EmployeesService empService;
 	
+	@GetMapping("")
+	public String hello1() {
+		return "<html><body><h1>Welcome to API</h1></body></html>";
+	}
+	
+	@GetMapping("/")
+	public String hello2() {
+		return "<html><body><h1>Welcome to API</h1></body></html>";
+	}
+	
 	@GetMapping("/home")
 	public String home() {
 		return "<html><body><h1>Employee Management System</h1><p>Welcome to Home Page</p></body></html>";
@@ -60,11 +70,10 @@ public class EmployeesController {
 	
 	@PostMapping("/employees")
 	public void addEmployee(@RequestBody Employee employee) {
-		System.out.println("Here");
 		empService.addEmployee(employee);
 	}
 	
-	@PutMapping("/employees")
+	@PutMapping("/employees/{empNo}")
 	public void updateEmployee(@RequestBody Employee employee) {
 		empService.updateEmployee(employee);
 	}
